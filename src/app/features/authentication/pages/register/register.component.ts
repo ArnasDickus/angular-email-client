@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatchPassword } from '@core/validators/match-password/match-password';
+import { UniqueUsername } from '@core/validators/unique-username/unique-username';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private matchPassword: MatchPassword
+    private matchPassword: MatchPassword,
+    private uniqueUsername: UniqueUsername
   ) { }
 
   public ngOnInit(): void {
@@ -26,7 +28,7 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(20),
         Validators.pattern(/^[a-z0-9]+$/)
-      ]],
+      ], [this.uniqueUsername.validate]],
       password: ['', [
         Validators.required,
         Validators.minLength(4),
