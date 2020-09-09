@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from '@core/components/footer/footer.component';
 import { HeaderComponent } from '@core/components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import {BsDropdownModule} from '@node_modules/ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BsDropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
