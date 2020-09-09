@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { Allroutes } from '@core/enums/allroutes.enum';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: `${Allroutes.LOGIN}`,
     pathMatch: 'full' ,
   },
 
