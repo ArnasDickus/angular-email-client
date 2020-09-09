@@ -1,1 +1,36 @@
-<p>input works!</p>
+<div class="form-group">
+  <label [for]="id">{{ label }}
+    <strong *ngIf="control.errors?.required" class="text-danger">*</strong>
+  </label>
+
+  <input [formControl]="control"
+         [type]="type"
+         class="form-control"
+         [id]="id">
+  <div *ngIf="showErrors()">
+    <p *ngIf="control.errors?.required" class="mt-2 alert alert-warning">
+      Value is required
+    </p>
+
+    <p *ngIf="control.errors?.minlength" class="mt-2 alert alert-warning">
+      Value you entered is {{ control.errors?.minlength.actualLength }}
+      characters long, but it must be least
+      {{ control.errors?.minlength.requiredLength }}
+    </p>
+
+    <p *ngIf="control.errors?.maxlength" class="mt-2 alert alert-warning">
+      Value you entered is {{ control.errors.maxlength.actualLength }}
+      characters long, but it cannot be longer than
+      {{ control.errors.maxlength.requiredLength }} characters
+    </p>
+
+    <p class="mt-2 alert alert-warning" *ngIf="control.errors?.pattern">
+      Invalid format
+    </p>
+
+    <p class="mt-2 alert alert-warning" *ngIf="control.errors?.nonUniqueUsername">Username is taken</p>
+    <p class="mt-2 alert alert-warning" *ngIf="control.errors?.noConnection">
+      No internet connection
+    </p>
+  </div>
+</div>
