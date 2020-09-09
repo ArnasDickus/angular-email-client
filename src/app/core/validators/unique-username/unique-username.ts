@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 import { FormControl, ValidationErrors, Validator } from '@angular/forms';
 import { catchError, map } from '@node_modules/rxjs/internal/operators';
 import { of } from '@node_modules/rxjs';
+import {AuthService} from '@core/services/auth/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class UniqueUsername implements Validator {
   private url = 'https://api.angular-email.com';
-  constructor(private http: HttpClient) {
+  constructor(
+    private authService: AuthService
+  ) {
   }
 
   public validate = (control: FormControl): ValidationErrors | null => {
     const { value } = control;
-    return this.http.post<any>(`${this.url}/auth/username`, {
-      username: value
-    }).pipe(
+    return this.authService.usernameAvailable(value)
+   .pipe(
       map((values) => {
         if (values.available) {
           return null;
