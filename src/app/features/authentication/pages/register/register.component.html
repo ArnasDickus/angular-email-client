@@ -1,6 +1,6 @@
 <div class="container">
   <h3>Create an Account</h3>
-  <form [formGroup]="form">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <app-input
       label="Username"
       [control]="form.get('username')"
@@ -31,6 +31,6 @@
       </p>
     </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Submit</button>
   </form>
 </div>

@@ -17,7 +17,7 @@ export class UniqueUsername implements Validator {
     const { value } = control;
     return this.authService.usernameAvailable(value)
    .pipe(
-      map((values) => {
+      map((values: any) => {
         if (values.available) {
           return null;
         }

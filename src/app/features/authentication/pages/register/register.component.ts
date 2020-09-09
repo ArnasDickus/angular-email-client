@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatchPassword } from '@core/validators/match-password/match-password';
 import { UniqueUsername } from '@core/validators/unique-username/unique-username';
+import { AuthService } from '@core/services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,11 +15,23 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private matchPassword: MatchPassword,
-    private uniqueUsername: UniqueUsername
+    private uniqueUsername: UniqueUsername,
+    private authService: AuthService
   ) { }
 
   public ngOnInit(): void {
     this.buildForm();
+  }
+
+  public onSubmit(): void {
+    if (this.form.invalid) {
+      return;
+    }
+    this.authService.signup(this.form.value)
+      .subscribe((response) => {
+        console.log(response);
+      });
+    console.log(this.form.value);
   }
 
   private buildForm(): void {
