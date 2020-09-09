@@ -1,6 +1,6 @@
 <div class="form-group">
   <label [for]="id">{{ label }}
-    <strong *ngIf="control.errors?.required" class="text-danger">*</strong>
+    <strong *ngIf="required" class="text-danger">*</strong>
   </label>
 
   <input [formControl]="control"

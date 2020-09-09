@@ -11,6 +11,7 @@ export class InputComponent implements OnInit {
   @Input() control: AbstractControl | FormControl;
   @Input() type: string;
   @Input() id: string;
+  @Input() required: boolean;
 
   constructor() { }
 

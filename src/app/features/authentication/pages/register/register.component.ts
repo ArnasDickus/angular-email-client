@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatchPassword } from '@core/validators/match-password/match-password';
 import { UniqueUsername } from '@core/validators/unique-username/unique-username';
 import { AuthService } from '@core/services/auth/auth.service';
@@ -27,11 +27,18 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.authService.signup(this.form.value)
-      .subscribe((response) => {
-        console.log(response);
-      });
-    console.log(this.form.value);
+    this.authService.signup(this.form.value).subscribe({
+      next: (response): any => {
+        // Navigate to some other route
+      },
+      error: (err) => {
+        if (!err.status) {
+          this.form.setErrors({ noConnection: true });
+        } else {
+          this.form.setErrors({ unknownError: true });
+        }
+      }
+    });
   }
 
   private buildForm(): void {

@@ -5,29 +5,41 @@
       label="Username"
       [control]="form.get('username')"
       type="text"
-      id="usernameInput">
+      id="usernameInput"
+      [required]="true">
     </app-input>
 
     <app-input
       label="Password"
       [control]="form.get('password')"
       type="password"
-      id="passwordInput">
+      id="passwordInput"
+      [required]="true">
     </app-input>
 
     <app-input
       label="Password Confirmation"
       [control]="form.get('passwordConfirmation')"
       type="password"
-      id="confirmPasswordInput">
+      id="confirmPasswordInput"
+      [required]="true">
     </app-input>
 
     <div *ngIf="
       form.get('password').touched &&
       form.get('passwordConfirmation').touched &&
-      form.errors">
-      <p *ngIf="form.errors?.passwordsDontMatch" class="mt-2 alert alert-warning">
+      form.errors"
+      class="alert alert-warning">
+      <p *ngIf="form.errors.passwordsDontMatch" class="mt-2">
         Password and Password confirmation does not match
+      </p>
+
+      <p *ngIf="form.errors.noConnection" class="mt-2">
+        No internet connection detected, failed to sign up.
+      </p>
+
+      <p *ngIf="form.errors.unknownError" class="mt-2">
+        Failed to sign up.
       </p>
     </div>
 
