@@ -1,3 +1,3 @@
-export interface SignupResponse {
+export interface RegisterResponse {
   username: string;
 }

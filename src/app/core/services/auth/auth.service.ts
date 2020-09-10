@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SignupCredentials } from '@core/interfaces/signup-credentials';
+import { RegisterCredentials } from '@core/interfaces/signup-credentials';
 import { UsernameAvailableResponse } from '@core/interfaces/username-available-response';
-import { SignupResponse } from '@core/interfaces/signup-response';
-import {Observable} from '@node_modules/rxjs';
+import { RegisterResponse } from '@core/interfaces/signup-response';
+import { BehaviorSubject, Observable} from '@node_modules/rxjs';
+import { tap } from '@node_modules/rxjs/internal/operators';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  public loggedIn$ = new BehaviorSubject(false);
   private url = 'https://api.angular-email.com';
 
   constructor(
@@ -23,9 +25,13 @@ export class AuthService {
     });
   }
 
-  public signup(credentials: SignupCredentials): Observable<SignupResponse> {
-    return this.http.post<SignupResponse>(
+  public register(credentials: RegisterCredentials): Observable<RegisterResponse> {
+    return this.http.post<RegisterResponse>(
       `${this.url}/auth/signup`, credentials
+    ).pipe(
+      tap(() => {
+        this.loggedIn$.next(true);
+      })
     );
   }
 }

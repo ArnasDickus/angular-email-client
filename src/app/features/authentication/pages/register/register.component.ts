@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-    this.authService.signup(this.form.value).subscribe({
+    this.authService.register(this.form.value).subscribe({
       next: (response): any => {
         // Navigate to some other route
       },

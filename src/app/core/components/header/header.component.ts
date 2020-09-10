@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Allroutes } from '@core/enums/allroutes.enum';
+import {BehaviorSubject} from '@node_modules/rxjs';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,7 @@ import { Allroutes } from '@core/enums/allroutes.enum';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Input() loggedIn$: BehaviorSubject<boolean>;
   public homeRoute = Allroutes.HOME;
   public inboxRoute = Allroutes.INBOX;
   public logoutRoute = Allroutes.LOGOUT;
