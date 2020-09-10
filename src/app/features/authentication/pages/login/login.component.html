@@ -1,1 +1,34 @@
-<p>login works!</p>
+<div class="container">
+  <h3>Login</h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <app-input
+      label="Username"
+      [control]="form.get('username')"
+      type="text"
+      id="usernameLoginInput"
+      [required]="false">
+    </app-input>
+
+    <app-input
+      label="Password"
+      [control]="form.get('password')"
+      type="password"
+      id="passwordLoginInput"
+      [required]="false">
+    </app-input>
+
+
+    <div *ngIf="form.errors"
+         class="alert alert-warning">
+      <p *ngIf="form.errors.credentials" class="mt-2">
+        Invalid username or password
+      </p>
+
+      <p *ngIf="form.errors.unknownError" class="mt-2">
+        No internet connection detected, failed to sign up.
+      </p>
+    </div>
+
+    <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Submit</button>
+  </form>
+</div>

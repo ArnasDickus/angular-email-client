@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {Allroutes} from '@core/enums/allroutes.enum';
 
 const routes: Routes = [
   // If not logged in. Redirect user to auth/login page.
@@ -13,6 +14,12 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./features/authentication/authentication.module').then(m => m.AuthenticationModule)
   },
+
+  {
+    path: Allroutes.INBOX,
+    loadChildren: () => import('./features/inbox/inbox.module').then(m => m.InboxModule)
+  },
+
   {
     path: '**',
     loadChildren: () => import('./features/not-found/not-found.module').then(m => m.NotFoundModule)

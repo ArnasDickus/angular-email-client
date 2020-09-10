@@ -6,6 +6,7 @@ import { RegisterResponse } from '@core/interfaces/signup-response';
 import { BehaviorSubject, Observable} from '@node_modules/rxjs';
 import { tap } from '@node_modules/rxjs/internal/operators';
 import {SignedInResponse} from '@core/interfaces/signed-in-response';
+import {LoginCredentials} from '@core/interfaces/login-credentials';
 
 
 @Injectable({
@@ -51,6 +52,15 @@ export class AuthService {
         tap(() => {
           this.loggedIn$.next(false);
         })
-      )
+      );
+  }
+
+  public login(credentials: LoginCredentials): Observable<LoginCredentials> {
+    return this.http.post<LoginCredentials>(`${this.url}/auth/signin`, credentials)
+      .pipe(
+        tap(() => {
+          this.loggedIn$.next(true);
+        })
+      );
   }
 }

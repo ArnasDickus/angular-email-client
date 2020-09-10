@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatchPassword } from '@core/validators/match-password/match-password';
 import { UniqueUsername } from '@core/validators/unique-username/unique-username';
 import { AuthService } from '@core/services/auth/auth.service';
+import {Router} from '@angular/router';
+import {Allroutes} from '@core/enums/allroutes.enum';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +18,8 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private matchPassword: MatchPassword,
     private uniqueUsername: UniqueUsername,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   public ngOnInit(): void {
@@ -29,7 +32,7 @@ export class RegisterComponent implements OnInit {
     }
     this.authService.register(this.form.value).subscribe({
       next: (response): any => {
-        // Navigate to some other route
+        this.router.navigateByUrl(`/${Allroutes.INBOX}`);
       },
       error: (err) => {
         if (!err.status) {
