@@ -4,7 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from '@core/components/footer/footer.component';
 import { HeaderComponent } from '@core/components/header/header.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthHttpInterceptor } from '@core/interceptors/auth-http-interceptor/auth-http-interceptor';
 import { BsDropdownModule } from '@node_modules/ngx-bootstrap/dropdown';
 
 @NgModule({
@@ -19,7 +20,9 @@ import { BsDropdownModule } from '@node_modules/ngx-bootstrap/dropdown';
     HttpClientModule,
     BsDropdownModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
