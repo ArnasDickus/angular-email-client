@@ -9,7 +9,6 @@ import { BehaviorSubject } from '@node_modules/rxjs';
 })
 export class HeaderComponent implements OnInit {
   @Input() loggedIn$: BehaviorSubject<boolean>;
-  public homeRoute = Allroutes.HOME;
   public inboxRoute = Allroutes.INBOX;
   public logoutRoute = Allroutes.LOGOUT;
   public loginRoute = Allroutes.LOGIN;

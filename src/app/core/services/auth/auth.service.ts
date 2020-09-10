@@ -5,6 +5,7 @@ import { UsernameAvailableResponse } from '@core/interfaces/username-available-r
 import { RegisterResponse } from '@core/interfaces/signup-response';
 import { BehaviorSubject, Observable} from '@node_modules/rxjs';
 import { tap } from '@node_modules/rxjs/internal/operators';
+import {SignedInResponse} from '@core/interfaces/signed-in-response';
 
 
 @Injectable({
@@ -36,11 +37,20 @@ export class AuthService {
   }
 
   public checkAuth(): any {
-    return this.http.get(`${this.url}/auth/signedin`)
+    return this.http.get<SignedInResponse>(`${this.url}/auth/signedin`)
       .pipe(
-        tap(response => {
-          console.log(response);
+        tap(({ authenticated }) => {
+          this.loggedIn$.next(authenticated);
         })
       );
+  }
+
+  public signOut(): any {
+    return this.http.post(`${this.url}/auth/signout`, {})
+      .pipe(
+        tap(() => {
+          this.loggedIn$.next(false);
+        })
+      )
   }
 }
