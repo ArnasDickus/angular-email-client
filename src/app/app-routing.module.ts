@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {Allroutes} from '@core/enums/allroutes.enum';
+import { Allroutes } from '@core/enums/allroutes.enum';
+import { AuthGuard } from '@core/guards/auth.guard';
 
 const routes: Routes = [
   // If not logged in. Redirect user to auth/login page.
@@ -17,6 +18,7 @@ const routes: Routes = [
 
   {
     path: Allroutes.INBOX,
+    canLoad: [AuthGuard],
     loadChildren: () => import('./features/inbox/inbox.module').then(m => m.InboxModule)
   },
 

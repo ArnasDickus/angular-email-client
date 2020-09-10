@@ -3,17 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { RegisterCredentials } from '@core/interfaces/signup-credentials';
 import { UsernameAvailableResponse } from '@core/interfaces/username-available-response';
 import { RegisterResponse } from '@core/interfaces/signup-response';
-import { BehaviorSubject, Observable} from '@node_modules/rxjs';
+import { BehaviorSubject, Observable } from '@node_modules/rxjs';
 import { tap } from '@node_modules/rxjs/internal/operators';
-import {SignedInResponse} from '@core/interfaces/signed-in-response';
-import {LoginCredentials} from '@core/interfaces/login-credentials';
+import { SignedInResponse } from '@core/interfaces/signed-in-response';
+import { LoginCredentials } from '@core/interfaces/login-credentials';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public loggedIn$ = new BehaviorSubject(false);
+  public loggedIn$ = new BehaviorSubject(null);
   private url = 'https://api.angular-email.com';
 
   constructor(
