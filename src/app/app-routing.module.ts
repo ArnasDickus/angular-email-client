@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { Allroutes } from '@core/enums/allroutes.enum';
 
 const routes: Routes = [
+  // If not logged in. Redirect user to auth/login page.
+  // If logged in redirect user to empty page.
   {
     path: '',
-    redirectTo: `${Allroutes.LOGIN}`,
-    pathMatch: 'full' ,
+    loadChildren: () => import('./features/landing/landing.module').then(m => m.LandingModule)
   },
 
   {

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Allroutes } from '@core/enums/allroutes.enum';
-import {BehaviorSubject} from '@node_modules/rxjs';
+import { BehaviorSubject } from '@node_modules/rxjs';
 
 @Component({
   selector: 'app-header',
