@@ -7,6 +7,7 @@ import { HeaderComponent } from '@core/components/header/header.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from '@node_modules/ngx-bootstrap/dropdown';
 import { AuthHttpInterceptor } from '@core/interceptors/auth-http-interceptor/auth-http-interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AuthHttpInterceptor } from '@core/interceptors/auth-http-interceptor/au
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BsDropdownModule
+    BsDropdownModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }

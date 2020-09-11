@@ -8,13 +8,21 @@ import { EmailReplayComponent } from './components/email-replay/email-replay.com
 import { EmailShowComponent } from './components/email-show/email-show.component';
 import { EmailIndexComponent } from './components/email-index/email-index.component';
 import { InboxPlaceholderComponent } from './components/inbox-placeholder/inbox-placeholder.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
-  declarations: [HomeComponent, EmailCreateComponent, EmailReplayComponent, EmailShowComponent, EmailIndexComponent, InboxPlaceholderComponent],
+  declarations: [
+    HomeComponent,
+    EmailCreateComponent,
+    EmailReplayComponent,
+    EmailShowComponent,
+    EmailIndexComponent,
+    InboxPlaceholderComponent],
   imports: [
     CommonModule,
-    InboxRoutingModule
+    InboxRoutingModule,
+    FontAwesomeModule
   ]
 })
 export class InboxModule { }
