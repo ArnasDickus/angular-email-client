@@ -9,6 +9,7 @@ import { EmailShowComponent } from './components/email-show/email-show.component
 import { EmailIndexComponent } from './components/email-index/email-index.component';
 import { InboxPlaceholderComponent } from './components/inbox-placeholder/inbox-placeholder.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     EmailReplayComponent,
     EmailShowComponent,
     EmailIndexComponent,
-    InboxPlaceholderComponent],
+    InboxPlaceholderComponent,
+    NotFoundComponent],
   imports: [
     CommonModule,
     InboxRoutingModule,
