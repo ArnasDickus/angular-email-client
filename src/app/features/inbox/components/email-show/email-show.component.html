@@ -1,1 +1,13 @@
-<p>email-show works!</p>
+<div *ngIf="email">
+  <div>
+    <h3> {{ email.subject}}</h3>
+
+    <div>
+      From: <i>{{ email.from }}</i>
+    </div>
+
+    <div>
+      To: {{ email.to }}
+    </div>
+  </div>
+</div>

@@ -1,8 +1,15 @@
-<a *ngFor="let email of emails" [routerLink]="email.id" class="text-decoration-none" routerLinkActive="active" >
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{ email.subject }}</h5>
-      <h6 class="card-subtitle mb-2 text-muted"> {{ email.from }}</h6>
+<div *ngIf="emails.length">
+  <a *ngFor="let email of emails" [routerLink]="email.id" class="text-decoration-none" routerLinkActive="active" >
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ email.subject }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted"> {{ email.from }}</h6>
+      </div>
     </div>
-  </div>
-</a>
+  </a>
+</div>
+
+<div *ngIf="!emails.length">
+  <p>Looks like there is no emails spooky.</p>
+</div>
+
