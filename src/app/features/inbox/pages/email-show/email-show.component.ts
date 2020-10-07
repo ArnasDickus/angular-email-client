@@ -19,6 +19,7 @@ export class EmailShowComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('email show activated');
   }
 
 }
