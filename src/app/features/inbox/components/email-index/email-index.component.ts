@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailService } from '@core/services/email/email.service';
 import { EmailSummary } from '@core/interfaces/email-summary';
-import {Allroutes} from '@core/enums/allroutes.enum';
 
 @Component({
   selector: 'app-email-index',
@@ -10,7 +9,6 @@ import {Allroutes} from '@core/enums/allroutes.enum';
 })
 export class EmailIndexComponent implements OnInit {
   public emails: EmailSummary[] = [];
-  public allRoutesInbox = Allroutes.INBOX;
 
   constructor(
     private emailService: EmailService
