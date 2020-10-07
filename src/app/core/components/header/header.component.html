@@ -1,41 +1,82 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a
-    class="navbar-brand"
-    routerLink="/"
-    [routerLinkActiveOptions]="{exact:true}"
-    routerLinkActive="active"
-    >Angular Email</a>
-  <button class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--  <a-->
+<!--    class="navbar-brand"-->
+<!--    routerLink="/"-->
+<!--    [routerLinkActiveOptions]="{exact:true}"-->
+<!--    routerLinkActive="active"-->
+<!--    >Angular Email</a>-->
+<!--  <button class="navbar-toggler"-->
+<!--          type="button"-->
+<!--          data-toggle="collapse"-->
+<!--          data-target="#navbarSupportedContent"-->
+<!--          aria-controls="navbarSupportedContent"-->
+<!--          aria-expanded="false"-->
+<!--          aria-label="Toggle navigation">-->
+<!--    <span class="navbar-toggler-icon"></span>-->
+<!--  </button>-->
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <ng-container *ngIf="loggedIn$ | async; else loggedOut">
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="inboxRoute" routerLinkActive="active">Inbox</a>
+<!--  <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--    <ul class="navbar-nav mr-auto">-->
+<!--      <ng-container *ngIf="loggedIn$ | async; else loggedOut">-->
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" [routerLink]="inboxRoute" routerLinkActive="active">Inbox</a>-->
+<!--        </li>-->
+
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" [routerLink]="logoutRoute" routerLinkActive="active">Log Out</a>-->
+<!--        </li>-->
+<!--      </ng-container>-->
+
+<!--      <ng-template #loggedOut>-->
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" [routerLink]="loginRoute" routerLinkActive="active">Log In</a>-->
+<!--        </li>-->
+
+<!--        <li class="nav-item active">-->
+<!--          <a class="nav-link" [routerLink]="registerRoute" routerLinkActive="active">Register</a>-->
+<!--        </li>-->
+<!--      </ng-template>-->
+<!--    </ul>-->
+<!--  </div>-->
+<!--</nav>-->
+
+
+<header class="header">
+  <div class="container d-flex flex-wrap justify-content-between align-items-center">
+    <a [routerLink]="'/'" class="header__title header__hover text-decoration-none pr-3">Angular Email</a>
+    <nav>
+      <ul class="list-unstyled d-flex mb-0">
+        <li class="pr-3">
+          <a
+            class="header__text text-decoration-none"
+            [routerLink]="'/'"
+            [routerLinkActive]="['header__is-active']"
+            [routerLinkActiveOptions]="{exact: true}">Home</a>
         </li>
 
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="logoutRoute" routerLinkActive="active">Log Out</a>
-        </li>
-      </ng-container>
+        <ng-container *ngIf="loggedIn$ | async; else loggedOut">
+          <li class="pr-3">
+            <a
+              class="header__text text-decoration-none"
+              [routerLink]="inboxRoute">Inbox</a>
+          </li>
 
-      <ng-template #loggedOut>
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="loginRoute" routerLinkActive="active">Log In</a>
-        </li>
+          <li class="pr-3">
+            <a class="header__text text-decoration-none" [routerLink]="logoutRoute">Log Out</a>
+          </li>
+        </ng-container>
 
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="registerRoute" routerLinkActive="active">Register</a>
-        </li>
-      </ng-template>
-    </ul>
+        <ng-template #loggedOut>
+          <li class="pr-3">
+            <a class="header__text text-decoration-none" [routerLink]="loginRoute">Log In</a>
+          </li>
+
+          <li class="pr-3">
+            <a class="header__text text-decoration-none" [routerLink]="registerRoute">Register</a>
+          </li>
+        </ng-template>
+      </ul>
+    </nav>
   </div>
-</nav>
+</header>
+

@@ -1,0 +1,28 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+.page {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
+.content {
+  width: 100%;
+  background:salmon;
+}
+
+.footer, header{
+  flex: none;
+  width: 100%;
+  margin: auto auto 0 auto;
+  padding: 15px;
+  text-align: center;
+  background:gray;
+}
