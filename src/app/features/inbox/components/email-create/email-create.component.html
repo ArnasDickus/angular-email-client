@@ -1,1 +1,17 @@
-<p>email-create works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+
+<!--  <div *ngIf="form.errors"-->
+<!--       class="alert alert-warning">-->
+<!--    <p *ngIf="form.errors.credentials" class="mt-2">-->
+<!--      Invalid username or password-->
+<!--    </p>-->
+
+<!--    <p *ngIf="form.errors.unknownError" class="mt-2">-->
+<!--      No internet connection detected, failed to sign up.-->
+<!--    </p>-->
+<!--  </div>-->
+
+  <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Send</button>
+</form>

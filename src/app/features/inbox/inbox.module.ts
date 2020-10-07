@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmailSidebarComponent } from './components/email-sidebar/email-sidebar.component';
 import { EmailLayoutComponent } from './components/email-layout/email-layout.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EmailLayoutComponent } from './components/email-layout/email-layout.com
   imports: [
     CommonModule,
     InboxRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ]
 })
 export class InboxModule { }
