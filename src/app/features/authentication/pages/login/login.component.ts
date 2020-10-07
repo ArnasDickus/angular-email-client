@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: () => {
         //  Navigate
-          this.router.navigateByUrl(`/${Allroutes.INBOX}`)
+          this.router.navigateByUrl(`/${Allroutes.INBOX}`);
 
         },
         error: ({ error }) => {

@@ -1,32 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { InboxPlaceholderComponent } from './components/inbox-placeholder/inbox-placeholder.component';
-import { EmailShowComponent } from './components/email-show/email-show.component';
+import { EmailShowComponent } from './pages/email-show/email-show.component';
 import { EmailResolverService } from '@core/resolvers/email/email-resolver.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { EmailLayoutComponent } from './components/email-layout/email-layout.component';
+import {Allroutes} from '../../core/enums/allroutes.enum';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: EmailLayoutComponent,
     children: [
-      {
-        path: 'not-found',
-        component: NotFoundComponent
-      },
-
       {
         path: ':id', component: EmailShowComponent,
         resolve: {
           email: EmailResolverService
         }
       },
-
       {
-        path: '', component: InboxPlaceholderComponent
-      }
+        path: 'not-found',
+        component: NotFoundComponent
+      },
+
+
     ]
   }
 ];

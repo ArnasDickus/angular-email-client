@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Email } from '@core/interfaces/email';
+import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Email} from '@core/interfaces/email';
 
 @Component({
   selector: 'app-email-show',
   templateUrl: './email-show.component.html',
   styleUrls: ['./email-show.component.scss']
 })
-export class EmailShowComponent {
+export class EmailShowComponent implements OnInit {
   public email: Email;
 
   constructor(
@@ -17,4 +17,8 @@ export class EmailShowComponent {
       this.email = email;
     });
   }
+
+  ngOnInit(): void {
+  }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmailService } from '@core/services/email/email.service';
 import { EmailSummary } from '@core/interfaces/email-summary';
+import {Allroutes} from '@core/enums/allroutes.enum';
 
 @Component({
   selector: 'app-email-index',
@@ -9,6 +10,7 @@ import { EmailSummary } from '@core/interfaces/email-summary';
 })
 export class EmailIndexComponent implements OnInit {
   public emails: EmailSummary[] = [];
+  public allRoutesInbox = Allroutes.INBOX;
 
   constructor(
     private emailService: EmailService
@@ -16,9 +18,7 @@ export class EmailIndexComponent implements OnInit {
 
   ngOnInit(): void {
     this.emailService.getEmails().subscribe((emails: EmailSummary[]) => {
-      console.log(emails);
       this.emails = emails;
-      console.log(this.emails);
     });
   }
 
