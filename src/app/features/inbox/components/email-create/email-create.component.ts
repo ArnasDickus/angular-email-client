@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailService } from '@core/services/email/email.service';
+import { NgbActiveModal } from '@node_modules/@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-email-create',
@@ -11,6 +13,8 @@ export class EmailCreateComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private emailService: EmailService,
+    public modal: NgbActiveModal
   ) { }
 
   ngOnInit(): void {
@@ -18,25 +22,23 @@ export class EmailCreateComponent implements OnInit {
   }
 
   public onSubmit(): void {
-    console.log(this.form);
-    console.log('submit');
+    if (this.form.invalid) {
+      return;
+    }
+    this.emailService.sendEmail(this.form.value).subscribe(() => {
+      this.modal.close();
+    });
   }
-
-  // public showErrors(): ValidationErrors {
-  //   // const { dirty, touched, errors } = this.control;
-  //   return dirty && touched && errors;
-  // }
 
   private buildForm(): void {
     this.form = this.formBuilder.group( {
-      receiver: ['', [
+      to: ['', [
         Validators.required,
         Validators.email]],
       subject: ['', [
         Validators.required,
         Validators.maxLength(20)]],
-      post: ['', [Validators.required]]
+      text: ['', [Validators.required]]
     });
   }
-
 }
