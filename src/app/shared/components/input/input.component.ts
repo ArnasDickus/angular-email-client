@@ -10,6 +10,7 @@ export class InputComponent implements OnInit {
   @Input() label: string;
   @Input() control: AbstractControl | FormControl;
   @Input() type: string;
+  @Input() defaultValue?: string;
   @Input() id: string;
   @Input() required: boolean;
 

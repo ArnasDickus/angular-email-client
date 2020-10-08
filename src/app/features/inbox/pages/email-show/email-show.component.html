@@ -12,6 +12,34 @@
     <div [innerHTML]="email.html">
     </div>
   </div>
-</div>
+  <button type="button" class="btn btn-primary mt-2" (click)="onReply()">Reply</button>
 
-<!-- http://localhost:4200/inbox/3bc14c738f09fd7e -->
+  <div *ngIf="reply">
+    <form class="p-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h3 class="home__title text-center">Reply to Email</h3>
+      <app-input
+        label="Receiver"
+        [control]="form.get('to')"
+        type="email"
+        id="receiver"
+        [required]="false">
+      </app-input>
+
+      <app-input
+        label="Subject"
+        [control]="form.get('subject')"
+        type="email"
+        id="subject"
+        [required]="false">
+      </app-input>
+
+      <app-editor
+        label="Post"
+        [control]="form.get('text')">
+      </app-editor>
+
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Send</button>
+    </form>
+
+  </div>
+</div>

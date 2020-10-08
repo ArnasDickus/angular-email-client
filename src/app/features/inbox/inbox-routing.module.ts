@@ -4,7 +4,6 @@ import { EmailShowComponent } from './pages/email-show/email-show.component';
 import { EmailResolverService } from '@core/resolvers/email/email-resolver.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmailLayoutComponent } from './components/email-layout/email-layout.component';
-import { Allroutes } from '@core/enums/allroutes.enum';
 import { EmailIndexComponent } from './components/email-index/email-index.component';
 
 
@@ -18,7 +17,7 @@ const routes: Routes = [
         component: EmailIndexComponent,
       },
       {
-        path: `${Allroutes.INBOX}/:id`,
+        path: ':id',
         component: EmailShowComponent,
 
         resolve: {

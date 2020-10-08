@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { InboxRoutingModule } from './inbox-routing.module';
 import { EmailCreateComponent } from './components/email-create/email-create.component';
 import { EmailReplayComponent } from './components/email-replay/email-replay.component';

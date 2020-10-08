@@ -6,6 +6,7 @@
   <input [formControl]="control"
          [type]="type"
          class="form-control"
+         [value]="defaultValue"
          [id]="id">
   <div *ngIf="showErrors()">
     <p *ngIf="control.errors?.required" class="mt-2 alert alert-warning">
