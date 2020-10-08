@@ -1,10 +1,10 @@
 {
-  "name": "angular-email",
+  "name": "angular-email-client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --output-path docs --base-href /angular-email/",
+    "build": "ng build --prod --output-path docs --base-href /angular-email-client/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
