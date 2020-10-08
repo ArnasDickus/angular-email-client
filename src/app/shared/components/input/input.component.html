@@ -12,6 +12,10 @@
       Value is required
     </p>
 
+    <p *ngIf="control.errors?.email" class="mt-2 alert alert-warning">
+      This does not look like email. Example: abc@fish.com
+    </p>
+
     <p *ngIf="control.errors?.minlength" class="mt-2 alert alert-warning">
       Value you entered is {{ control.errors?.minlength.actualLength }}
       characters long, but it must be least

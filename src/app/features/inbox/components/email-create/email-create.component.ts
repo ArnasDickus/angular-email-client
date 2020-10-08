@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-email-create',
@@ -8,8 +8,9 @@ import {FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/for
 })
 export class EmailCreateComponent implements OnInit {
   public form: FormGroup;
+
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -21,10 +22,10 @@ export class EmailCreateComponent implements OnInit {
     console.log('submit');
   }
 
-  public showErrors(): ValidationErrors {
-    const { dirty, touched, errors } = this.control;
-    return dirty && touched && errors;
-  }
+  // public showErrors(): ValidationErrors {
+  //   // const { dirty, touched, errors } = this.control;
+  //   return dirty && touched && errors;
+  // }
 
   private buildForm(): void {
     this.form = this.formBuilder.group( {

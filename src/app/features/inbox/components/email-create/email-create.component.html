@@ -1,20 +1,25 @@
 <form class="p-5" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h3 class="home__title text-center">Submit email</h3>
+    <app-input
+      label="Receiver"
+      [control]="form.get('receiver')"
+      type="email"
+      id="receiver"
+      [required]="false">
+    </app-input>
 
-  <div class="form-group">
-    <label for="receiver">Receiver</label>
-    <input formControlName="receiver" type="text" class="form-control" id="receiver">
-  </div>
-  {{form.get('receiver').errors | json}}
-  <div class="form-group">
-    <label for="subject">Subject</label>
-    <input formControlName="subject" type="text" class="form-control" id="subject">
-  </div>
+    <app-input
+      label="Subject"
+      [control]="form.get('subject')"
+      type="email"
+      id="subject"
+      [required]="false">
+    </app-input>
 
-  <div class="form-group">
-    <label for="post">Post</label>
-    <p-editor formControlName="post" [style]="{'height':'200px'}" id="post"></p-editor>
-  </div>
-
-
+  <app-editor
+    label="Post"
+    [control]="form.get('post')">
+  </app-editor>
+  
   <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Send</button>
 </form>
