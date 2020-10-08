@@ -9,6 +9,7 @@ import { BsDropdownModule } from '@node_modules/ngx-bootstrap/dropdown';
 import { AuthHttpInterceptor } from '@core/interceptors/auth-http-interceptor/auth-http-interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     BsDropdownModule,
     FontAwesomeModule,
+    ReactiveFormsModule,
     NgbModule
   ],
   providers: [

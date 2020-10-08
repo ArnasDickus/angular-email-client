@@ -12,6 +12,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { EmailSidebarComponent } from './components/email-sidebar/email-sidebar.component';
 import { EmailLayoutComponent } from './components/email-layout/email-layout.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {EditorModule} from 'primeng/editor';
+import {SharedModule} from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     InboxRoutingModule,
     FontAwesomeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EditorModule,
+    SharedModule
   ]
 })
 export class InboxModule { }

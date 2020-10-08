@@ -1,17 +1,20 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form class="p-5" [formGroup]="form" (ngSubmit)="onSubmit()">
 
+  <div class="form-group">
+    <label for="receiver">Receiver</label>
+    <input formControlName="receiver" type="text" class="form-control" id="receiver">
+  </div>
+  {{form.get('receiver').errors | json}}
+  <div class="form-group">
+    <label for="subject">Subject</label>
+    <input formControlName="subject" type="text" class="form-control" id="subject">
+  </div>
 
+  <div class="form-group">
+    <label for="post">Post</label>
+    <p-editor formControlName="post" [style]="{'height':'200px'}" id="post"></p-editor>
+  </div>
 
-<!--  <div *ngIf="form.errors"-->
-<!--       class="alert alert-warning">-->
-<!--    <p *ngIf="form.errors.credentials" class="mt-2">-->
-<!--      Invalid username or password-->
-<!--    </p>-->
-
-<!--    <p *ngIf="form.errors.unknownError" class="mt-2">-->
-<!--      No internet connection detected, failed to sign up.-->
-<!--    </p>-->
-<!--  </div>-->
 
   <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Send</button>
 </form>
